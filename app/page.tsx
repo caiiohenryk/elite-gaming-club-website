@@ -15,13 +15,14 @@ const teams = [
     short: "RT",
     side: "real",
     crest: "/assets/real-trepi.png",
+    rosterImage: "/assets/real-trepi-anime-roster.png",
     motto: "Controle, classe e clutch.",
     color: "Dourado & marinho",
     players: [
-      { name: "Player 01", role: "Capitão · EA FC", number: "07", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85" },
-      { name: "Player 02", role: "Street Fighter", number: "10", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=85" },
-      { name: "Player 03", role: "Pokémon TCG", number: "18", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=85" },
-      { name: "Player 04", role: "Mario Kart", number: "21", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=85" },
+      { name: "Caio", role: "Capitão · EA FC", number: "07", position: "0% 0%" },
+      { name: "Vitor", role: "Street Fighter", number: "10", position: "100% 0%" },
+      { name: "Carlos", role: "Pokémon TCG", number: "18", position: "0% 100%" },
+      { name: "Matheus Domingos", role: "Mario Kart", number: "21", position: "100% 100%" },
     ],
   },
   {
@@ -29,13 +30,14 @@ const teams = [
     short: "VG",
     side: "vacilona",
     crest: "/assets/vacilona-gc.png",
+    rosterImage: "/assets/vacilona-anime-roster.png",
     motto: "Pressão alta em qualquer lobby.",
     color: "Grená & azul",
     players: [
-      { name: "Player 01", role: "Capitão · EA FC", number: "09", photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=85" },
-      { name: "Player 02", role: "Street Fighter", number: "11", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=85" },
-      { name: "Player 03", role: "Pokémon TCG", number: "17", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=85" },
-      { name: "Player 04", role: "Mario Kart", number: "23", photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=85" },
+      { name: "Richard", role: "Capitão · EA FC", number: "09", position: "0% 0%" },
+      { name: "Cesar", role: "Street Fighter", number: "11", position: "100% 0%" },
+      { name: "Pedro", role: "Pokémon TCG", number: "17", position: "0% 100%" },
+      { name: "Marcelo", role: "Mario Kart", number: "23", position: "100% 100%" },
     ],
   },
 ];
@@ -54,7 +56,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav" aria-label="Navegação principal">
-        <a className="wordmark" href="#inicio"><span>ELITE</span> GAMING CLUB</a>
+        <a className="wordmark" href="#inicio"><img src="/assets/ejc-championship-logo.png" alt="Logo do Campeonato EJC" /><span>ELITE</span> GAMING CLUB</a>
         <div className="nav-links">
           <a href="#formato">Formato</a>
           <a href="#jogos">Jogos</a>
@@ -139,7 +141,7 @@ export default function Home() {
               <div className="player-track" tabIndex={0} aria-label={`Jogadores do ${team.name}. Arraste horizontalmente para ver todos.`}>
                 {team.players.map((player) => (
                   <article className="player-card" key={player.number}>
-                    <img src={player.photo} alt={`Foto temporária de ${player.name}`} />
+                    <span className="player-portrait" style={{ backgroundImage: `url(${team.rosterImage})`, backgroundPosition: player.position }} aria-hidden="true" />
                     <div className="player-card-shade" aria-hidden="true" />
                     <span className="player-number">{player.number}</span>
                     <div className="player-info"><strong>{player.name}</strong><small>{player.role}</small></div>
